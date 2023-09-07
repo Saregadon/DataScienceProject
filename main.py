@@ -1,16 +1,16 @@
 #import dependencies
 import os
 import gymnasium as gym
-import pytorch
 import stable_baselines3
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.evaluation import evaluate_policy
 
-env_name = 'CartPole-v0' #maps to preinstall environment from gym
+env_name = 'CartPole-v1' #maps to preinstall environment from gym
 env = gym.make(env_name) #creating environment
+observation, info = env.reset(seed=42)
 
-episodes = 5
+episodes = 5 #number of loops through the game
 for episode in range(1, episodes+1):
     state = env.reset()
     done = False
@@ -19,7 +19,12 @@ for episode in range(1, episodes+1):
     while not done:
         env.render()
         action = env.action_space.sample()
-        n_state, reward, done, info = env.step(action)
+        n_state, reward, done, truncated, info = env.step(action)
         score += reward
+
+        if done or truncated:
+            observation, info = env.reset()
+
+        #print(env.reset())
     print('Episode:{} Score:{}'.format(episode, score))
 env.close()

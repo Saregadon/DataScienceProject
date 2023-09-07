@@ -6,11 +6,14 @@ Agent = Mario
 
 
 Action (List of Actions)
-    - 
+    - Left / Right
+    - Running
+    - Jump
 
-Environment{
+Environment
+    -Simulated Custom Environment
+    -
 
-}
-Rewards + Observations{
 
-}
+Rewards + Observations
+

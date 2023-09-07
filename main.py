@@ -44,3 +44,4 @@ model = PPO('MlpPolicy', env, verbose=1, tensorboard_log=log_path) #MLP = Multil
 model.learn(total_timesteps = 20000) #trains the model
 
 PPO_Path = os.path.join('Training','Saved Models', 'PPO_Model_Cartpole') #saves place of the model
+model.save(PPO_Path) #saves model

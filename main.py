@@ -32,4 +32,4 @@ for episode in range(1, episodes+1):
     print('Episode: {} Score: {}'.format(episode, score))
 env.close()
 
-log_path = os.path.join('Training', 'Logs') #will create folders with Saved Models and logs
+log_path = os.path.join('Training', 'Logs') 

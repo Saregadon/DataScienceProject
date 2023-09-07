@@ -1,12 +1,15 @@
 #import dependencies
 import os
+import torch #pytorch
+import numpy as np
 import gymnasium as gym
 import stable_baselines3
+import tensorflow as tf
 from stable_baselines3 import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.evaluation import evaluate_policy
 
-env_name = 'CartPole-v1' #maps to preinstall environment from gym
+env_name = 'CartPole-v1' #maps to preinstalled environment from gym
 env = gym.make(env_name) #creating environment
 observation, info = env.reset(seed=42)
 
@@ -26,5 +29,7 @@ for episode in range(1, episodes+1):
             observation, info = env.reset()
 
         #print(env.reset())
-    print('Episode:{} Score:{}'.format(episode, score))
+    print('Episode: {} Score: {}'.format(episode, score))
 env.close()
+
+log_path = os.path.join('Training', 'Logs') #will create folders with Saved Models and logs

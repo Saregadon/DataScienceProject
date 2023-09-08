@@ -45,3 +45,7 @@ model.learn(total_timesteps = 20000) #trains the model
 
 PPO_Path = os.path.join('Training','Saved Models', 'PPO_Model_Cartpole') #saves place of the model
 model.save(PPO_Path) #saves model
+
+del model #deletes model
+
+model = PPO.load(PPO_Path, env=env)
